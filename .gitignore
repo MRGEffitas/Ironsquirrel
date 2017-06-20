@@ -47,5 +47,10 @@ Temporary Items
 .apdisk
 
 
-Ebowla/*.*
-backups/*.*
+Ebowla/
+backups/
+notused/
+DH_HTTP_Server_caches.rb
+public/jdetects.js
+public/jdetects.min.js
+gibtest.rb
