@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+        
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+	<title>ECDH exploit demo</title>	
+
+	<script type="text/javascript" src="./sjcl.js"></script>
+	<script type="text/javascript" src="dh.js"></script>
+	    <style>
+        #mtdiv{
+            position: absolute;
+            width: 960px;
+            height: 166px;
+            z-index: 15;
+            top: 100px;
+            left: 50%;
+            margin: 0 0 0 -480px;
+        }
+    </style>
+</head>
+<body onload="loaded()">
+	<h1>ECDH test</h1>
+	<script>loaded();test();</script>
+
+<div id="target"></div>
+
+<div id='mtdiv'></div>
+</body>
+</html>
