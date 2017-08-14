@@ -38,15 +38,19 @@ require 'find'
 '''
 
 
+# The port the webserver to listen on. Probably good idea to change to 80 
+listen_port = 2345
+
 # Files will be served from this directory
 WEB_ROOT = './public'
 EXPLOITS = './exploits'
-EBOWLA_INSTALL_DIR = '/home/ubuntu/Ebowla/'
-EBOWLA_EXE_PAYLOAD = '/home/ubuntu/ecdh_old/exploits/004.exe'
-EBOWLA_EXE_PS1_OUTPUT = '/home/ubuntu/ecdh_old/output/powershell_symmetric_004.exe.ps1'
 
-use_ebowla_payload = true
-listen_port = 2345
+# In case Ebowla is used, configure it here. If Ebowla is not used, set use_ebowla_payload to false and leave the followings on default
+use_ebowla_payload = false
+EBOWLA_INSTALL_DIR = '/home/ubuntu/Ebowla/'
+EBOWLA_EXE_PAYLOAD = '/home/ubuntu/ecdh/exploits/004.exe'
+EBOWLA_EXE_PS1_OUTPUT = '/home/ubuntu/ecdh/output/powershell_symmetric_004.exe.ps1'
+
 
 options = {}
 OptionParser.new do |opt|
@@ -54,7 +58,7 @@ OptionParser.new do |opt|
 end.parse!
 
 if options[:exploit].nil?
-  puts "Choose your exploit file with --exploit path_to_exploit\n\n"
+  puts "Choose your exploit file with --exploit full_path_to_exploit\nAvailable exploits: \n\n"
   html_file_paths = []
   Find.find(File.expand_path(File.join(File.dirname(__FILE__)),EXPLOITS)) do |path|
     if path =~ /.*\.html$/
@@ -508,7 +512,7 @@ loop do
       end
       
       if final ==  steps_to_finish
-        $securecookie = "ruiq34hruefslsdkf4r"   #just overwrite with random
+        $securecookie = "ruiq34hruefslsdkf4r"   #just overwrite with Debian random
         abort("The end")
         final = 0
       end

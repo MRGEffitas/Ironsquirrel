@@ -1,8 +1,6 @@
-#TODO create README
-
 #TODO caching sjcl.js screws up Chrome - use expires instead of etag?
 
-#TODO remove env variable when not needed - add to Ebowla
+#TODO remove env variable when not needed anymore - add to Ebowla
 
 #TODO PS1 payload is delivered as encoded, not encrypted :/
 
