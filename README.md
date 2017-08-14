@@ -84,5 +84,5 @@ This project is licensed under the GPL3 License - see the [LICENSE.md](LICENSE.m
 
 ![alt text][logo]
 
-[logo]: https://raw.githubusercontent.com/MRGEffitas/Ironsquirrel/master/genetic.config.ecdh "IRONSQUIRREL"
+[logo]: https://raw.githubusercontent.com/MRGEffitas/Ironsquirrel/master/IRONSQUIRREL.jpg "IRONSQUIRREL"
 
