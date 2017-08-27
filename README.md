@@ -2,12 +2,11 @@
 
 This project aims at delivering browser exploits to the victim browser in an encrypted fashion. Ellyptic-curve Diffie-Hellman (secp256k1) is used for key agreement and AES is used for encryption.
 
-By delivering the exploit code (and shellcode) to the victim encrypted, the attack can not be replayed and the HTML/JS source is encrypted, thus reverse engineering the exploit is significantly harder.   
+By delivering the exploit code (and shellcode) to the victim in an encrypted way, the attack can not be replayed. Meanwhile the HTML/JS source is encrypted thus reverse engineering the exploit is significantly harder.   
 
-If you have no idea what I am talking about, Google for "How to hide your browser 0-days", and check my presentation. 
+If you have no idea what I am talking about, Google for "How to hide your browser 0-days", and check my presentation. Or check out it on Youtube: https://www.youtube.com/watch?v=eyMDd98uljI 
 
 ## Getting Started
-
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
@@ -32,7 +31,6 @@ https://github.com/Genetic-Malware/Ebowla
 3. (Optional) If Ebowla is used, configure genetic.config.ecdh in the Ebowla install directory
 4. Run IRONSQUIRREL.rb
 
-
 ```
 ruby IRONSQUIRREL.rb --exploit full_path_to_exploit
 ```
@@ -53,10 +51,9 @@ GET /sjcl.js HTTP/1.1
 The end
 ```
 
-## Deployment instructions
+## Deployment instructions for production environments
 1. Let me know if you use this for real
-2. Spend at least 2 days to figure out what could go wrong 
-
+2. Spend at least 2 weeks to figure out what could go wrong 
 
 ## Contributing
 
@@ -81,6 +78,8 @@ This project is licensed under the GPL3 License - see the [LICENSE.md](LICENSE.m
 * @zmadarassy
 * @xoreipeip
 * @DavidSzili
+* @theevilbit
+* Szimues
 
 ![alt text][logo]
 
