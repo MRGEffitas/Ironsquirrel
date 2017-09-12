@@ -12,7 +12,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Mandatory dependencies - run the followings after cloning the project in the project directory:
+Mandatory dependencies - clone the IRONSQUIRREL project, cd into the project directory, and run the following commands:
 ```
 sudo apt-get install ruby-dev
 bundle install
@@ -24,12 +24,13 @@ https://github.com/Genetic-Malware/Ebowla
 
 ### Installing
 
-1. Install the prerequisites
-2. (Optional) Edit IRONSQUIRREL.rb 
+1. Clone the IRONSQUIRREL project
+2. Install the prerequisites
+3. (Optional) Edit IRONSQUIRREL.rb 
    1. Change the listen port
    2. If Ebowla is used, configure the paths
-3. (Optional) If Ebowla is used, configure genetic.config.ecdh in the Ebowla install directory
-4. Run IRONSQUIRREL.rb
+4. (Optional) If Ebowla is used, configure genetic.config.ecdh in the Ebowla install directory
+5. Run IRONSQUIRREL.rb
 
 ```
 ruby IRONSQUIRREL.rb --exploit full_path_to_exploit
