@@ -7,8 +7,7 @@ By delivering the exploit code (and shellcode) to the victim in an encrypted way
 If you have no idea what I am talking about, Google for "How to hide your browser 0-days", and check my presentation. Or check out it on Youtube: https://www.youtube.com/watch?v=eyMDd98uljI 
 Or slides on Slideshare: https://www.slideshare.net/bz98/how-to-hide-your-browser-0days 
 
-![][arch]
-[arch]: https://raw.githubusercontent.com/MRGEffitas/Ironsquirrel/master/IRONSQUIRREL_arch.png "IRONSQUIRREL"
+![](https://raw.githubusercontent.com/MRGEffitas/Ironsquirrel/master/IRONSQUIRREL_arch.png "IRONSQUIRREL")
 
 
 ## Getting Started
