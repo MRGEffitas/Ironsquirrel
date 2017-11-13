@@ -86,11 +86,8 @@ This project is licensed under the GPL3 License - see the [LICENSE.md](LICENSE.m
 * @theevilbit
 * Szimues
 
-<<<<<<< HEAD
+
 ![logo][logo]
-=======
-![][logo]
->>>>>>> 35d834c96cb7d2985e4f625ea804993f3e092aef
 
 [logo]: https://raw.githubusercontent.com/MRGEffitas/Ironsquirrel/master/IRONSQUIRREL.jpg "IRONSQUIRREL"
 
