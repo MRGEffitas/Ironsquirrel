@@ -84,7 +84,7 @@ This project is licensed under the GPL3 License - see the [LICENSE.md](LICENSE.m
 * @xoreipeip
 * @DavidSzili
 * @theevilbit
-* Szimues
+* Szimeus
 
 
 ![logo][logo]
