@@ -7,6 +7,12 @@ By delivering the exploit code (and shellcode) to the victim in an encrypted way
 If you have no idea what I am talking about, Google for "How to hide your browser 0-days", and check my presentation. Or check out it on Youtube: https://www.youtube.com/watch?v=eyMDd98uljI 
 Or slides on Slideshare: https://www.slideshare.net/bz98/how-to-hide-your-browser-0days 
 
+The idea of encrypted exploit delivery was first published by me in June 2, 2015:
+https://twitter.com/zh4ck/status/605754804472823808
+https://www.mrg-effitas.com/research/generic-bypass-of-next-gen-intrusion-threat-breach-detection-systems/
+
+The Angler exploit kit guys just stole my idea. And implemented it poorly.
+
 ![](https://raw.githubusercontent.com/MRGEffitas/Ironsquirrel/master/IRONSQUIRREL_arch.png "IRONSQUIRREL")
 
 
